@@ -61,6 +61,7 @@ services:
         - CHOKIDAR_USEPOLLING=true
         networks:
             - internal
+        stdin_open: true
 
 networks:
     internal:
