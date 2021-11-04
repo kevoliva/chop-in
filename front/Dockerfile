@@ -3,6 +3,8 @@ FROM node:14
 #set working directory
 WORKDIR /front
 
+ENV PATH /front/node_modules/.bin:$PATH
+
 # add app
 COPY ./front/package.json /front
 
