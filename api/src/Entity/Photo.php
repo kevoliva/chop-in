@@ -5,74 +5,82 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=PhotoRepository::class)
- */
+* @ApiResource(
+* normalizationContext={"groups"={"photo:read"}},
+* denormalizationContext={"groups"={"photo:write"}}
+* )
+* @ORM\Entity(repositoryClass=PhotoRepository::class)
+*/
 class Photo
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+  /**
+  * @ORM\Id
+  * @ORM\GeneratedValue
+  * @Groups({"photo:read", "photo:write"})
+  * @ORM\Column(type="integer")
+  */
+  private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $cheminPhoto;
+  /**
+  * @Groups({"photo:read", "photo:write"})
+  * @ORM\Column(type="string", length=255)
+  */
+  private $cheminPhoto;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description;
+  /**
+  * @Groups({"photo:read", "photo:write"})
+  * @ORM\Column(type="string", length=255, nullable=true)
+  */
+  private $description;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Bar::class, inversedBy="photos")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $bar;
+  /**
+  * @ORM\ManyToOne(targetEntity=Bar::class, inversedBy="photos")
+  * @Groups({"photo:read", "photo:write"})
+  * @ORM\JoinColumn(nullable=false)
+  */
+  private $bar;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
 
-    public function getCheminPhoto(): ?string
-    {
-        return $this->cheminPhoto;
-    }
+  public function getCheminPhoto(): ?string
+  {
+    return $this->cheminPhoto;
+  }
 
-    public function setCheminPhoto(string $cheminPhoto): self
-    {
-        $this->cheminPhoto = $cheminPhoto;
+  public function setCheminPhoto(string $cheminPhoto): self
+  {
+    $this->cheminPhoto = $cheminPhoto;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
+  public function getDescription(): ?string
+  {
+    return $this->description;
+  }
 
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
+  public function setDescription(?string $description): self
+  {
+    $this->description = $description;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    public function getBar(): ?Bar
-    {
-        return $this->bar;
-    }
+  public function getBar(): ?Bar
+  {
+    return $this->bar;
+  }
 
-    public function setBar(?Bar $bar): self
-    {
-        $this->bar = $bar;
+  public function setBar(?Bar $bar): self
+  {
+    $this->bar = $bar;
 
-        return $this;
-    }
+    return $this;
+  }
 }
