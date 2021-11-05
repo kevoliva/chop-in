@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 export class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
         activeMarker: {},
         selectedPlace: {},
+        mapCenter: {
+            lat: 44.8333,
+            lng: -0.56667
+        }
     };
 
     onMarkerClick = (props, marker, e) =>
@@ -26,9 +30,19 @@ export class MapContainer extends Component {
     render() {
         return (
             <Map google={this.props.google}
-                onClick={this.onMapClicked}>
-                <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
+                initialCenter={{
+                    lat: this.state.mapCenter.lat,
+                    lng: this.state.mapCenter.lng,
+                }}
+                center={{
+                    lat: this.state.mapCenter.lat,
+                    lng: this.state.mapCenter.lng,
+                }}>
+                <Marker
+                    position={{
+                        lat: this.state.mapCenter.lat,
+                        lng: this.state.mapCenter.lng,
+                    }} />
             </Map>
         )
     }
