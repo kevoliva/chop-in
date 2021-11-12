@@ -96,3 +96,26 @@
 #title-navbar-row-hide {
   display: none;
 }
+
+/* Gestion du responsive */
+@media only screen and (max-width: 768px) {
+  .Navbar,
+  .Navbar-hide {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .NavbarList {
+    display: flex;
+  }
+
+  .menu-burger,
+  .menu-burger-clicked,
+  .menu-burger-row,
+  .menu-burger-row-hide,
+  #title-navbar-row {
+    display: none;
+  }
+}
