@@ -2,10 +2,10 @@
  margin: 30px 20px 30px auto;
  border-radius: 10px;
  width: 20%;
- height: 30px;
+ height: 4vh;
  display: flex;
 }
 
-Map {
-    height: 80%;
+.map {
+ height: 87vh!important;
 }

@@ -82,9 +82,8 @@ export class MapContainer extends Component {
                         </div>
                     )}
                 </PlacesAutocomplete>
-                <Map
+                <Map className="map"
                     google={this.props.google}
-                    style={{ height: '85%', position: 'relative' }}
                     scrollwheel={false}
                     streetViewControl={false}
                     mapTypeControl={false}
