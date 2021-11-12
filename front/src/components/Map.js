@@ -4,6 +4,9 @@ import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
 } from 'react-places-autocomplete';
+import '../Map.css';
+
+
 
 export class MapContainer extends Component {
     constructor(props) {
@@ -17,8 +20,6 @@ export class MapContainer extends Component {
                 lat: 44.8333,
                 lng: -0.56667
             }
-
-
         }
     };
 
@@ -39,7 +40,8 @@ export class MapContainer extends Component {
 
     render() {
         return (
-            <div id="googleMap">
+
+            <div className="googleMap">
                 <PlacesAutocomplete
                     value={this.state.address}
                     onChange={this.handleChange}
@@ -52,7 +54,7 @@ export class MapContainer extends Component {
                             <input
                                 {...getInputProps({
                                     placeholder: 'Rechercher une ville ...',
-                                    className: 'location-search-input',
+                                    className: 'inputSearchMap',
                                 })}
                             />
                             <div className="autocomplete-dropdown-container">
@@ -80,7 +82,13 @@ export class MapContainer extends Component {
                         </div>
                     )}
                 </PlacesAutocomplete>
-                <Map google={this.props.google}
+                <Map
+                    google={this.props.google}
+                    style={{ height: '85%', position: 'relative' }}
+                    scrollwheel={false}
+                    streetViewControl={false}
+                    mapTypeControl={false}
+                    fullscreenControl={false}
                     initialCenter={{
                         lat: this.state.mapCenter.lat,
                         lng: this.state.mapCenter.lng,
@@ -88,7 +96,8 @@ export class MapContainer extends Component {
                     center={{
                         lat: this.state.mapCenter.lat,
                         lng: this.state.mapCenter.lng,
-                    }}>
+                    }}
+                >
                     {/* <Marker
                         position={{
                             lat: this.state.mapCenter.lat,

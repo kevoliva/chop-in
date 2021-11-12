@@ -1,11 +1,9 @@
 import './App.css';
-import GoogleMap from './components/GoogleMap';
-
+import GoogleMap from './components/Map';
 function App() {
   return (
     <div className="App">
       <header className="">
-        <h1>Map</h1>
         <GoogleMap />
       </header>
     </div>
