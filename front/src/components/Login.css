@@ -1,2 +1,87 @@
 .Pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid aqua;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #fefee2;
+}
+
+.pop-up-header {
+  display: flex;
+  justify-content: center;
+  background-color: #e8b822;
+  width: 75%;
+  margin: auto;
+  margin-top: 10%;
+  height: 5%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.login-process {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 95%;
+}
+
+.sign-up {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up:hover {
+  background-color: #eeca52;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+}
+
+.sign-in {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in:hover {
+  background-color: #eeca52;
+  cursor: pointer;
+}
+
+.pop-up-content {
+  width: 75%;
+  height: 50%;
+  margin: auto;
+  background-color: #fefee2;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pop-up-content h1 {
+  margin: 0;
+}
+.close-btn {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.close-btn:hover {
+  border-top-right-radius: 5px;
+  background-color: #eeca52;
 }

@@ -10,38 +10,7 @@ function App() {
       <Header />
       <Navbar />
       <div className="content">
-        <Login trigger={true}>
-        <h1>YAAAAAA</h1>
-        <h1>YAAAAAA</h1>
-        <h1>YAAAAAA</h1>
-        <h1>YAAAAAA</h1>
-        <h1>YAAAAAA</h1>
-        
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>)
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-          <h1>YAAAAAA</h1>
-        </Login>
+        <Login trigger={false} />
       </div>
 
     </div>

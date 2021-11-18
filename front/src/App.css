@@ -1,11 +1,12 @@
 .App {
   width: 100vw;
   height: 100vh;
+  overflow: inherit;
   display: flex;
 }
 
 .content {
-  margin-left: 1%;
+  margin-left: 11%;
   margin-top: 4%;
 }
 

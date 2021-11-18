@@ -19,7 +19,6 @@ function Navbar() {
     var [RowTitle, titleStyle] = useState("title-navbar-row-hide");
     var [RowBurger, iconStyle] = useState("menu-burger-row-hide");
     var [Navbar, navbarStyle] = useState("Navbar-hide");
-   
     /**
      * Fonction appelée lors du click sur le menu burger.
      * Cette fonction permet de changer le style de certains éléments de la vue.

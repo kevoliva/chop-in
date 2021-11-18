@@ -2,7 +2,7 @@
   height: 100%;
   width: 10%;
   background-color: #e8b822;
-  position: relative; /* Enlever cet élément pour avoir le menu burger sous la div header*/
+  position: fixed; /* Enlever cet élément pour avoir le menu burger sous la div header*/
   transition: 0.5s;
 }
 
@@ -10,7 +10,7 @@
   height: 100%;
   width: 3%;
   background-color: #e8b822;
-  position: relative; /* Enlever cet élément pour avoir le menu burger sous la div header*/
+  position: fixed; /* Enlever cet élément pour avoir le menu burger sous la div header*/
   transition: 0.5s;
 }
 
