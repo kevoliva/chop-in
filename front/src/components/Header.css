@@ -1,0 +1,57 @@
+.Header {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background-color: #e8b822;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #fefee2;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* Enlever cet élément pour avoir le menu burger sous la div header*/
+}
+.blank {
+  flex: 5%;
+}
+.title {
+  flex: 90%;
+  vertical-align: auto;
+}
+.profile {
+  width: 100%;
+  height: 100%;
+  flex: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile:hover {
+  cursor: pointer;
+  background-color: #eeca52;
+  transition: 0.5s;
+}
+
+#Chop-in {
+  margin: 0;
+}
+
+/* Gestion du responsive */
+@media only screen and (max-width: 768px) {
+  .blank {
+    flex: 15%;
+  }
+  .title {
+    flex: 70%;
+    vertical-align: auto;
+  }
+  .profile {
+    width: 100%;
+    height: 100%;
+    flex: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

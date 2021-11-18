@@ -21,7 +21,8 @@ function Navbar() {
     var [Navbar, navbarStyle] = useState("Navbar-hide");
    
     /**
-     * Fonction appelée lors du click sur le menu burger 
+     * Fonction appelée lors du click sur le menu burger.
+     * Cette fonction permet de changer le style de certains éléments de la vue.
      */
     const changeStyle = () => {
         if(MenuBurger == "menu-burger-clicked")
@@ -41,7 +42,7 @@ function Navbar() {
     };
 
     /**
-     * Vue affichée
+     * Code affiché
      */
     return (
         <div className={Navbar}>
