@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\SalonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,40 +11,40 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
-* @ApiResource(
-* normalizationContext={"groups"={"salon:read"}},
-* denormalizationContext={"groups"={"salon:write"}}
-* )
-* @ORM\Entity(repositoryClass=SalonRepository::class)
-*/
+ * @ApiResource(
+ * normalizationContext={"groups"={"salon:read"}},
+ * denormalizationContext={"groups"={"salon:write"}}
+ * )
+ * @ORM\Entity(repositoryClass=SalonRepository::class)
+ */
 class Salon
 {
   /**
-  * @ORM\Id
-  * @ORM\GeneratedValue
-  * @Groups({"salon:read", "salon:write"})
-  * @ORM\Column(type="integer")
-  */
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @Groups({"salon:read", "salon:write"})
+   * @ORM\Column(type="integer")
+   */
   private $id;
 
   /**
-  * @ORM\ManyToOne(targetEntity=Bar::class, inversedBy="salons")
-  * @Groups({"salon:read", "salon:write"})
-  * @ORM\JoinColumn(nullable=false)
-  */
-  private $bar;
-
-  /**
-  * @Groups({"salon:read", "salon:write"})
-  * @ORM\ManyToMany(targetEntity=Client::class, mappedBy="salons")
-  */
+   * @Groups({"salon:read", "salon:write"})
+   * @ORM\ManyToMany(targetEntity=Client::class, mappedBy="salons")
+   */
   private $clients;
 
   /**
-  * @Groups({"salon:read", "salon:write"})
-  * @ORM\OneToMany(targetEntity=Message::class, mappedBy="salon", orphanRemoval=true)
-  */
+   * @ApiSubResource
+   * @Groups({"salon:read", "salon:write"})
+   * @ORM\OneToMany(targetEntity=Message::class, mappedBy="salon", orphanRemoval=true)
+   */
   private $messages;
+
+  /**
+   * @Groups({"salon:read", "salon:write"})
+   * @ORM\OneToOne(targetEntity=Bar::class, mappedBy="salon", cascade={"persist", "remove"})
+   */
+  private $bar;
 
   public function __construct()
   {
@@ -69,8 +70,8 @@ class Salon
   }
 
   /**
-  * @return Collection|Client[]
-  */
+   * @return Collection|Client[]
+   */
   public function getClients(): Collection
   {
     return $this->clients;
@@ -96,8 +97,8 @@ class Salon
   }
 
   /**
-  * @return Collection|Message[]
-  */
+   * @return Collection|Message[]
+   */
   public function getMessages(): Collection
   {
     return $this->messages;

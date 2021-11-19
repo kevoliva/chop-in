@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
 * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -23,7 +24,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
   /**
   * @ORM\Id
   * @ORM\GeneratedValue
-  * @Groups({"user:read", "user:write"})
+  * @Groups({"user:read"})
   * @ORM\Column(type="integer")
   */
   private $id;
@@ -35,7 +36,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
   private $email;
 
   /**
-  * @Groups({"user:read", "user:write"})
+  * @Groups({"user:read"})
   * @ORM\Column(type="json")
   */
   private $roles = [];
@@ -45,6 +46,12 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
   * @ORM\Column(type="string")
   */
   private $password;
+
+  /**
+  * @Groups("user:write")
+  * @SerializedName("password")
+  */
+  private $plainPassword;
 
   /**
   * @Groups({"user:read", "user:write"})
@@ -63,6 +70,12 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
   * @ORM\Column(type="string", length=255)
   */
   private $nom;
+
+  // public function __construct()
+  // {
+  //   $this->roles = [{"ROLE_USER"}];
+  //   $this->cheminPhoto = "default.png";
+  // }
 
   public function getId(): ?int
   {
@@ -133,6 +146,18 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     return $this;
   }
 
+  public function getPlainPassword(): string
+  {
+    return $this->plainPassword;
+  }
+
+  public function setPlainPassword(string $plainPassword): self
+  {
+    $this->plainPassword = $plainPassword;
+
+    return $this;
+  }
+
   /**
   * Returning a salt is only needed, if you are not using a modern
   * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
@@ -150,7 +175,7 @@ abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
   public function eraseCredentials()
   {
     // If you store any temporary, sensitive data on the user, clear it here
-    // $this->plainPassword = null;
+    $this->plainPassword = null;
   }
 
   public function getCheminPhoto(): ?string
