@@ -89,6 +89,7 @@ class AppFixtures extends Fixture
       $salon = new Salon();
       $salon->setBar($bar);
       $salon->addClient($client);
+      $bar->setSalon($salon);
 
       for ($m=0; $m < 10; $m++) {
         $message = new Message();

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,21 +12,23 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
 * @ApiResource(
-* normalizationContext={"groups"={"client:read"}},
-* denormalizationContext={"groups"={"client:write"}}
+* normalizationContext={"groups"={"user:read"}},
+* denormalizationContext={"groups"={"user:write"}}
 * )
 * @ORM\Entity(repositoryClass=ClientRepository::class)
 */
 class Client extends User
 {
   /**
-  * @Groups({"client:read", "client:write"})
+  * @ApiSubResource
+  * @Groups({"user:read", "user:write"})
   * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="client", orphanRemoval=true)
   */
   private $avis;
 
   /**
-  * @Groups({"client:read", "client:write"})
+  * @ApiSubResource
+  * @Groups({"user:read", "user:write"})
   * @ORM\ManyToMany(targetEntity=Salon::class, inversedBy="clients")
   */
   private $salons;
