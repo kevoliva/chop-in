@@ -1,13 +1,14 @@
+import React from 'react';
 import './App.css';
-import GoogleMap from './components/Map';
+import MapContainer from './components/Map';
 function App() {
   return (
     <div className="App">
       <header className="">
-        <GoogleMap />
+        <MapContainer />
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
