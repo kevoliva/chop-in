@@ -29,15 +29,44 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <!-- <div name="popup" class="popup" id='div'>
+      <div class="content-popup">
+        <h2>Easter Egg</h2>
+        <img src="./easter_egg.jpg" alt="Un Easter Egg"/>
+        <p>Un œuf de Pâques est un message, une image ou un élément caché dans un logiciel, un jeu vidéo, un film ou un autre support, généralement électronique. Le terme utilisé de cette manière a été inventé vers 1979 par Steve Wright, alors directeur du développement logiciel de la division grand public d'Atari, pour décrire un message caché dans le jeu vidéo Adventure d'Atari, en référence à une chasse aux œufs de Pâques.</p>
+      </div>
+    </div> -->
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- <script>
+      document.addEventListener("keydown", function(){
+      var x=event.keyCode || event.which;
+      if(x==17)
+      {
+        document.getElementById("div").style.display = "block";
+      }
+      })
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      document.addEventListener("keyup", function(){
+      var x=event.keyCode || event.which;
+      if(x==17)
+      {
+      document.getElementById("div").style.display = "none";
+      }
+      })
+
+      var tailleEcranY = window.innerHeight*0.01;
+      var tailleEcranX = window.innerWidth*0.95;
+      document.onmousemove = function(event) {
+      	pointerX = event.pageX;
+      	pointerY = event.pageY;
+        if(pointerX > tailleEcranX && pointerY < tailleEcranY){
+          document.getElementById("div").style.display = "block";
+        }
+        else {
+          document.getElementById("div").style.display = "none";
+        }
+      }
+
+    </script> -->
   </body>
 </html>

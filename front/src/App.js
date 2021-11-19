@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Form from "./components/Form";
+import Recipes from "./components/Recipes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    recipes: []
+  }
+
+  getRecipe = async (e) => {
+    const eventName = e.target.elements.eventName.value;
+    e.preventDefault();
+
+    const api_call = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${eventName}`);
+    const data = await api_call.json();
+    this.setState({ recipes: data.drinks});
+    console.log(this.state.recipes);
+  }
+
+  componentDidMount = () => {
+    const json = localStorage.getItem("recipes");
+    const recipes = JSON.parse(json);
+    this.setState({ recipes: recipes });
+  }
+
+  componentDidMount = () => {
+    const recipes = JSON.stringify(this.state.recipes);
+    localStorage.setItem("recipes", recipes);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Recherche d'événements</h1>
+        </header>
+        <Form getRecipe={this.getRecipe} />
+        <Recipes recipes={this.state.recipes} />
+      </div>
+    );
+  }
 }
 
 export default App;
