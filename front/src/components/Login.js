@@ -32,6 +32,7 @@ function Login(props) {
         }
     };
 
+    /** Pop-up affichée avec les formulaires d'inscription et de connexion */
     return (props.trigger) ? (
         
         <div className="Pop-up">
@@ -45,24 +46,26 @@ function Login(props) {
            <div className="pop-up-content">
                {props.children}
                 <div className={Signup}>
-                    <h1>S'inscrire</h1>
-                    <div>
-                        <form>
-                            <input type="text" placeholder="Nom"/>
-                            <input type="text" placeholder="Prenom"/>
-                            <input type="email" placeholder="Email"/>
-                            <input type="password" placeholder="Mot de Passe"/>
-                            <input type="submit" value="S'inscrire"/>
+                    <div className="div-form-signup">
+                        <form className="form">
+                            <div className="form-inputs">
+                                <input className="input" type="text" placeholder="Nom"/>
+                                <input className="input" type="text" placeholder="Prenom"/>
+                                <input className="input" type="email" placeholder="Email"/>
+                                <input className="input" type="password" placeholder="Mot de Passe"/>
+                                <input className="input-btn" type="submit" value="S'inscrire"/>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div className={Signin}>
-                    <h1>Se connecter</h1>
-                    <div>
-                        <form>
-                        <input type="email" placeholder="Email"/>
-                            <input type="password" placeholder="Mot de Passe"/>
-                            <input type="submit" value="Se connecter"/>
+                    <div className="div-form-signin">
+                        <form className="form">
+                            <div className="form-inputs">
+                                <input className="input" type="email" placeholder="Email"/>
+                                <input className="input" type="password" placeholder="Mot de Passe"/>
+                                <input className="input-btn" type="submit" value="Se connecter"/>
+                            </div>
                         </form>
                     </div>
                 </div>
