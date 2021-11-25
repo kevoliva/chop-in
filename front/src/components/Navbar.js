@@ -24,7 +24,7 @@ function Navbar() {
      * Cette fonction permet de changer le style de certains éléments de la vue.
      */
     const changeStyle = () => {
-        if(MenuBurger == "menu-burger-clicked")
+        if(MenuBurger === "menu-burger-clicked")
         {
             MenuBurger = menuStyle("menu-burger");
             RowTitle = titleStyle("title-navbar-row");
@@ -53,7 +53,7 @@ function Navbar() {
                     return (
                         <li key={key}
                             className="row"
-                            id={window.location.pathname == val.link ? "active" : ""}
+                            id={window.location.pathname === val.link ? "active" : ""}
                             onClick={() => {
                                 window.location.pathname = val.link
                             }}>

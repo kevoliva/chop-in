@@ -5,56 +5,8 @@
   display: flex;
 }
 
-.content {
-  margin-left: 11%;
-  margin-top: 4%;
-}
-
 body {
   margin: 0%;
   padding: 0%;
   background-color: #fefee2;
-}
-
-/** Gestion du responsive **/
-@media only screen and (max-width: 1600px) {
-  .content {
-    margin-top: 6%;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .content {
-    margin-top: 7%;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  .content {
-    margin-top: 9%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .content {
-    margin-top: 12%;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .content {
-    margin-top: 15%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .content {
-    margin-top: 20%;
-  }
-}
-
-@media only screen and (max-width: 300px) {
-  .content {
-    margin-top: 25%;
-  }
 }
