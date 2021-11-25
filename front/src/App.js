@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
+import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 class App extends Component {
   state = {
@@ -32,6 +34,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
+        <Navbar />
         <header className="App-header">
           <h1 className="App-title">Recherche d'événements</h1>
         </header>
@@ -40,6 +44,7 @@ class App extends Component {
       </div>
     );
   }
+
 }
 
 export default App;
