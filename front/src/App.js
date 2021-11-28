@@ -36,11 +36,11 @@ class App extends Component {
       <div className="App">
         <Header />
         <Navbar />
-        <header className="App-header">
-          <h1 className="App-title">Recherche d'événements</h1>
-        </header>
-        <Form getRecipe={this.getRecipe} />
-        <Recipes recipes={this.state.recipes} />
+        <div className="content">
+          <Form getRecipe={this.getRecipe} />
+          <Recipes recipes={this.state.recipes} />
+        </div>
+
       </div>
     );
   }
