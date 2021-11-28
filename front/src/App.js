@@ -4,6 +4,8 @@ import Form from "./components/Form";
 import Recipes from "./components/Recipes";
 import Navbar from './components/Navbar';
 import Header from './components/Header';
+import Recipe from "./components/Recipe";
+import { BrowserRouter, Routes, Route  } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -33,15 +35,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <Navbar />
-        <div className="content">
-          <Form getRecipe={this.getRecipe} />
-          <Recipes recipes={this.state.recipes} />
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route path="/events" element={[<Form getRecipe={this.getRecipe} />,  <Recipes recipes={this.state.recipes} />]} />
+              <Route path="/recipe/:id" element={<Recipe/>} />
+            </Routes>
+          </div>
         </div>
+      </BrowserRouter>
 
-      </div>
     );
   }
 
