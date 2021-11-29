@@ -13,13 +13,13 @@ class App extends Component {
   }
 
   getRecipe = async (e) => {
-    const eventName = e.target.elements.eventName.value;
+   // const eventName = e.target.elements.eventName.value;
     e.preventDefault();
 
-    const api_call = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${eventName}`);
+    const api_call = await fetch(`http://localhost:8080/api/evenements/`);
     const data = await api_call.json();
-    this.setState({ recipes: data.drinks});
-    console.log(this.state.recipes);
+    this.setState({ recipes: data['hydra:member']});
+    console.log(data['hydra:member']);
   }
 
   componentDidMount = () => {
