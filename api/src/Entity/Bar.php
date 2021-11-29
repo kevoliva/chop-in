@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\BarRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,111 +11,117 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
-* @ApiResource(
-* normalizationContext={"groups"={"bar:read"}},
-* denormalizationContext={"groups"={"bar:write"}}
-* )
-* @ORM\Entity(repositoryClass=BarRepository::class)
-*/
+ * @ApiResource(
+ * normalizationContext={"groups"={"bar:read"}},
+ * denormalizationContext={"groups"={"bar:write"}}
+ * )
+ * @ORM\Entity(repositoryClass=BarRepository::class)
+ */
 class Bar
 {
   /**
-  * @ORM\Id
-  * @ORM\GeneratedValue
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="integer")
-  */
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="integer")
+   */
   private $id;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $nom;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="float")
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="float")
+   */
   private $latitude;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="float")
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="float")
+   */
   private $longitude;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $nomRue;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $numRue;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $codePostal;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $ville;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255)
+   */
   private $telephone;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\Column(type="string", length=255, nullable=true)
-  */
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
   private $qrCode;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\OneToMany(targetEntity=Consommable::class, mappedBy="bar", orphanRemoval=true)
-  */
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\OneToMany(targetEntity=Consommable::class, mappedBy="bar", orphanRemoval=true)
+   */
   private $consommables;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="bar", orphanRemoval=true)
-  */
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="bar", orphanRemoval=true)
+   */
   private $evenements;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\OneToMany(targetEntity=Salon::class, mappedBy="bar", orphanRemoval=true)
-  */
-  private $salons;
-
-  /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="bar", orphanRemoval=true)
-  */
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\OneToMany(targetEntity=Avis::class, mappedBy="bar", orphanRemoval=true)
+   */
   private $avis;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\ManyToOne(targetEntity=Gerant::class, inversedBy="bars")
-  */
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\ManyToOne(targetEntity=Gerant::class, inversedBy="bars")
+   */
   private $gerant;
 
   /**
-  * @Groups({"bar:read", "bar:write"})
-  * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="bar", orphanRemoval=true)
-  */
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="bar", orphanRemoval=true)
+   */
   private $photos;
+
+  /**
+   * @ApiSubresource
+   * @Groups({"bar:read", "bar:write"})
+   * @ORM\OneToOne(targetEntity=Salon::class, inversedBy="bar", cascade={"persist", "remove"})
+   */
+  private $salon;
 
   public function __construct()
   {
@@ -239,8 +246,8 @@ class Bar
   }
 
   /**
-  * @return Collection|Consommable[]
-  */
+   * @return Collection|Consommable[]
+   */
   public function getConsommables(): Collection
   {
     return $this->consommables;
@@ -269,8 +276,8 @@ class Bar
   }
 
   /**
-  * @return Collection|Evenement[]
-  */
+   * @return Collection|Evenement[]
+   */
   public function getEvenements(): Collection
   {
     return $this->evenements;
@@ -299,38 +306,8 @@ class Bar
   }
 
   /**
-  * @return Collection|Salon[]
-  */
-  public function getSalons(): Collection
-  {
-    return $this->salons;
-  }
-
-  public function addSalon(Salon $salon): self
-  {
-    if (!$this->salons->contains($salon)) {
-      $this->salons[] = $salon;
-      $salon->setBar($this);
-    }
-
-    return $this;
-  }
-
-  public function removeSalon(Salon $salon): self
-  {
-    if ($this->salons->removeElement($salon)) {
-      // set the owning side to null (unless already changed)
-      if ($salon->getBar() === $this) {
-        $salon->setBar(null);
-      }
-    }
-
-    return $this;
-  }
-
-  /**
-  * @return Collection|Avis[]
-  */
+   * @return Collection|Avis[]
+   */
   public function getAvis(): Collection
   {
     return $this->avis;
@@ -371,8 +348,8 @@ class Bar
   }
 
   /**
-  * @return Collection|Photo[]
-  */
+   * @return Collection|Photo[]
+   */
   public function getPhotos(): Collection
   {
     return $this->photos;
@@ -396,6 +373,18 @@ class Bar
         $photo->setBar(null);
       }
     }
+
+    return $this;
+  }
+
+  public function getSalon(): ?Salon
+  {
+    return $this->salon;
+  }
+
+  public function setSalon(?Salon $salon): self
+  {
+    $this->salon = $salon;
 
     return $this;
   }
