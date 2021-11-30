@@ -1,0 +1,11 @@
+.inputSearchMap {
+    margin: 30px 20px 30px auto;
+    border-radius: 10px;
+    width: 20%;
+    height: 4vh;
+    display: flex;
+   }
+   
+   .map {
+    height: 87vh!important;
+   }
